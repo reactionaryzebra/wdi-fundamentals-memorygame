@@ -21,6 +21,7 @@ var cards = [
   }
 ];
 var cardsInPlay = [];
+var resetButton = document.getElementById('reset-button');
 
 var checkForMatch = function(){
   if (cardsInPlay.length === 2){
@@ -36,6 +37,8 @@ var checkForMatch = function(){
       alert('Sorry, try again');
     }
   }
+  resetButton.style.display = 'block';
+  resetButton.addEventListener('click', resetBoard)
 };
 
 var flipCard = function(){
@@ -54,10 +57,41 @@ var createBoard = function(){
   cards.forEach(function(element){
     var cardElement = document.createElement('img');
     cardElement.setAttribute('src', 'images/back.png');
+    cardElement.setAttribute('class', 'cardOnBoard')
     cardElement.setAttribute('data-id', cards.indexOf(element));
     cardElement.addEventListener('click', flipCard);
     document.getElementById('game-board').appendChild(cardElement);
   });
+};
+
+var resetBoard = function(){
+  cards = [
+    {
+      rank: 'queen',
+      suit: 'hearts',
+      cardImage: 'images/queen-of-hearts.png'
+    },
+    {
+      rank: 'queen',
+      suit: 'diamonds',
+      cardImage: 'images/queen-of-diamonds.png'
+    },
+    {
+      rank: 'king',
+      suit: 'hearts',
+      cardImage: 'images/king-of-hearts.png'
+    },
+    {
+      rank: 'king',
+      suit: 'diamonds',
+      cardImage: 'images/king-of-diamonds.png'
+    }
+  ];
+  cardsInPlay = [];
+  resetButton.style.display = 'none';
+  for(var i = 0; i < 4; i++){
+  document.getElementsByTagName('img')[i].setAttribute('src', 'images/back.png')
+  };
 };
 
 createBoard();

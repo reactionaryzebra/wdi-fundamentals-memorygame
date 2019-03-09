@@ -94,3 +94,12 @@ font-size: 0;
   color: #F15B31;
   font-weight: 700;
 }
+
+button{
+  display: none;
+  margin: 3% auto;
+  font-size: 20px;
+  border-radius: 10%;
+  background-color: #f35b31;
+  color: white;
+}
